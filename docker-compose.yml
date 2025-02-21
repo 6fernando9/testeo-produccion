@@ -2,6 +2,8 @@ services:
   spring-api-image:
     image: spring-api-image
     container_name: spring-api-container
+    env_file:
+      - .env
     ports:
       - "8080:8080"
     networks:
