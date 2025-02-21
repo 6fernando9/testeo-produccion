@@ -10,5 +10,3 @@ services:
       - spring-network
 networks:
   spring-network:
-volumes:
-  mysql-volume:
