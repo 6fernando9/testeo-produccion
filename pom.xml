@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 <!--		para el mapper-->
 		<org.mapstruct.version>1.6.3</org.mapstruct.version>
 	</properties>
@@ -87,6 +87,8 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<version>1.18.34</version>
+			<scope>provided</scope>
 			<optional>true</optional>
 		</dependency>
 		<dependency>
@@ -149,8 +151,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>17</source> <!-- Versión de Java compatible con tu proyecto -->
-					<target>17</target> <!-- Versión de Java compatible con tu proyecto -->
+					<source>21</source> <!-- Versión de Java compatible con tu proyecto -->
+					<target>21</target> <!-- Versión de Java compatible con tu proyecto -->
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>
@@ -160,7 +162,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
-
+							<version>1.18.34</version> <!-- Agrega esta línea con la versión -->
 						</path>
 					</annotationProcessorPaths>
 				</configuration>
