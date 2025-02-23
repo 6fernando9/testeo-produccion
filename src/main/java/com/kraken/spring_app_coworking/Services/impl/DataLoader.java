@@ -42,6 +42,8 @@ public class DataLoader implements CommandLineRunner {
         if (!optionalRol.isPresent()){
             throw new Exception("Rol no Encontrado");
         }
+        //si el usuario no esta presente
+        if(!this.usuarioRepository.findByCorreo(this.email).isPresent()){
             Usuario admin = Usuario.builder()
                     .correo(this.email)
                     .password(this.passwordEncoder.encode(this.password))
@@ -49,6 +51,10 @@ public class DataLoader implements CommandLineRunner {
                     .rol(optionalRol.get())
                     .build();
             usuarioRepository.save(admin);
-        System.out.println("usuario almacenado");
+            System.out.println("usuario almacenado");
+        }else{
+            System.out.println("usuario admin ya esta presente en el sistema");
+        }
+
     }
 }

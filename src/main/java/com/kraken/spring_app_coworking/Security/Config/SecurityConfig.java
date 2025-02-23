@@ -2,6 +2,8 @@ package com.kraken.spring_app_coworking.Security.Config;
 
 import com.kraken.spring_app_coworking.Models.enums.RolEnum;
 import com.kraken.spring_app_coworking.Repositories.BitacoraUsuarioRepository;
+import com.kraken.spring_app_coworking.Security.CustomAccessDeniedHandler;
+import com.kraken.spring_app_coworking.Security.CustomAuthenticationEntryPoint;
 import com.kraken.spring_app_coworking.Security.Filters.JwtAuthenticationFilter;
 import com.kraken.spring_app_coworking.Security.Filters.JwtValidationFilter;
 import com.kraken.spring_app_coworking.Repositories.UsuarioRepository;
@@ -47,6 +49,12 @@ public class SecurityConfig {
 
     @Autowired
     private CustomOAuth2UserService oAuth2UserService;
+
+    @Autowired
+    private CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+
+    @Autowired
+    private CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Bean
     AuthenticationManager authenticationManager() throws Exception{
@@ -106,6 +114,10 @@ public class SecurityConfig {
                                     System.out.println("Error de autenticación: " + exception.getMessage());
                                     response.sendRedirect("/auth/oauth2/failure");
                                 })
+                )
+                .exceptionHandling( exceptionHandling -> exceptionHandling
+                        .authenticationEntryPoint(this.customAuthenticationEntryPoint)
+                        .accessDeniedHandler(this.customAccessDeniedHandler)
                 )
                 .csrf(config -> config.disable())//stateless = sin estado
     //            .cors(cors-> cors.configurationSource(this.corsConfigurationSource.corsConfigurationSource()))

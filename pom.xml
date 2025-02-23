@@ -146,6 +146,23 @@
 <!--			<artifactId>lettuce-core</artifactId>-->
 <!--			<version>6.4.2.RELEASE</version>-->
 <!--		</dependency>-->
+
+<!--	dependencia de Flyway	-->
+<!--		 https://mvnrepository.com/artifact/org.flywaydb/flyway-core -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+<!--			<version>10.17.2</version>-->
+		</dependency>
+<!--		supuestamente para tener mejor gestion del Mysql-->
+		<!-- https://mvnrepository.com/artifact/org.flywaydb/flyway-mysql -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+<!--			<version>10.17.2</version>-->
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
